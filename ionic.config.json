@@ -1,5 +1,7 @@
 {
   "name": "ToDoIonic",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
