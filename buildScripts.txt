@@ -1,0 +1,7 @@
+platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk
+
+keytool -genkey -v -keystore todo.keystore -alias todo -keyalg RSA -keysize 2048 -validity 10000
+
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore todo.keystore platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk todo
+
+zipalign -v 4 platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk TodoIonic_v0.0.1.apk
