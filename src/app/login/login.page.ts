@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { ToastController, Platform } from '@ionic/angular';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
+
+import { FCM } from '@ionic-native/fcm/ngx';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +18,19 @@ export class LoginPage implements OnInit {
     password: ""
   }
 
-  constructor(private router: Router, private toastCtrl: ToastController) { }
+  constructor(private router: Router, private toastCtrl: ToastController, private fcm: FCM, private platform: Platform) { 
+
+
+    this.platform.ready().then(() => {
+      // application is ready to use cordova plugins
+
+      this.fcm.getToken().then((token) => {
+        console.log(token);
+        alert(token);
+      })
+
+    })
+  }
 
   ngOnInit() {
   }

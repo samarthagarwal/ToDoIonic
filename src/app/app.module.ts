@@ -9,6 +9,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import { FCM } from '@ionic-native/fcm/ngx';
+
 import * as firebase from 'firebase/app';
 
 firebase.initializeApp({
@@ -28,6 +30,7 @@ firebase.initializeApp({
   providers: [
     StatusBar,
     SplashScreen,
+    FCM,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
